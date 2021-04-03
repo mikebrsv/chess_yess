@@ -1,14 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faChessPawn,
-  faChessKnight,
-  faChessBishop,
-  faChessRook,
-  faChessQueen,
-  faChessKing,
-} from '@fortawesome/free-solid-svg-icons'
+import Piece from './Piece'
 
 const Square = ({
   index,
@@ -36,17 +28,17 @@ const Square = ({
 
   useEffect(() => {
     if (index === 0 || index === 7 || index === 56 || index === 63) {
-      setCurrentPiece((currentPiece) => ({ ...currentPiece, icon: faChessRook, piece: 'rook' }))
+      setCurrentPiece((currentPiece) => ({ ...currentPiece, piece: 'rook' }))
     } else if (index === 1 || index === 6 || index === 57 || index === 62) {
-      setCurrentPiece((currentPiece) => ({ ...currentPiece, icon: faChessKnight, piece: 'knight' }))
+      setCurrentPiece((currentPiece) => ({ ...currentPiece, piece: 'knight' }))
     } else if (index === 2 || index === 5 || index === 58 || index === 61) {
-      setCurrentPiece((currentPiece) => ({ ...currentPiece, icon: faChessBishop, piece: 'bishop' }))
+      setCurrentPiece((currentPiece) => ({ ...currentPiece, piece: 'bishop' }))
     } else if (index === 3 || index === 59) {
-      setCurrentPiece((currentPiece) => ({ ...currentPiece, icon: faChessQueen, piece: 'queen' }))
+      setCurrentPiece((currentPiece) => ({ ...currentPiece, piece: 'queen' }))
     } else if (index === 4 || index === 60) {
-      setCurrentPiece((currentPiece) => ({ ...currentPiece, icon: faChessKing, piece: 'king' }))
+      setCurrentPiece((currentPiece) => ({ ...currentPiece, piece: 'king' }))
     } else if ((index >= 8 && index <= 15) || (index >= 48 && index <= 55)) {
-      setCurrentPiece((currentPiece) => ({ ...currentPiece, icon: faChessPawn, piece: 'pawn' }))
+      setCurrentPiece((currentPiece) => ({ ...currentPiece, piece: 'pawn' }))
     }
 
     if (index >= 0 && index <= 15) {
@@ -63,7 +55,7 @@ const Square = ({
       onClick={() => { squareClickHandler(index, currentPiece ? currentPiece : null) }}
     >
       <span className="square-debug">{`${index}/${file}${rank}`}</span>
-      {currentPiece && <FontAwesomeIcon icon={currentPiece.icon} className={`piece ${currentPiece.color}`} />}
+      {currentPiece && <Piece piece={currentPiece.piece} color={currentPiece.color} />}
     </div>
   )
 }
