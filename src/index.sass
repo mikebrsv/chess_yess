@@ -1,0 +1,241 @@
+*,
+*::before,
+*::after
+  box-sizing: border-box
+
+body
+  margin: 0
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+.row
+  display: flex
+  justify-content: center
+  position: relative
+
+.col
+  padding: 15px
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-flow: column
+
+.board
+  display: flex
+  flex-wrap: wrap
+  width: 500px
+  height: 500px
+  margin-left: 35px
+  margin-bottom: 35px
+
+.square
+  flex: 0 0 auto
+  width: 12.5%
+  height: 12.5%
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+  transition: background-color .2s
+  cursor: default
+
+  &::before
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: -30px
+
+  &::after
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    bottom: -30px
+
+  &:nth-child(1)
+    &::before
+      content: '8'
+
+  &:nth-child(9)
+    &::before
+      content: '7'
+
+  &:nth-child(17)
+    &::before
+      content: '6'
+
+  &:nth-child(25)
+    &::before
+      content: '5'
+
+  &:nth-child(33)
+    &::before
+      content: '4'
+
+  &:nth-child(41)
+    &::before
+      content: '3'
+
+  &:nth-child(49)
+    &::before
+      content: '2'
+
+  &:nth-child(57)
+    &::before
+      content: '1'
+
+    &::after
+      content: 'a'
+
+  &:nth-child(58)
+    &::after
+      content: 'b'
+
+  &:nth-child(59)
+    &::after
+      content: 'c'
+
+  &:nth-child(60)
+    &::after
+      content: 'd'
+
+  &:nth-child(61)
+    &::after
+      content: 'e'
+
+  &:nth-child(62)
+    &::after
+      content: 'f'
+
+  &:nth-child(63)
+    &::after
+      content: 'g'
+
+  &:nth-child(64)
+    &::after
+      content: 'h'
+
+  &.white
+    background-color: #e7eaef
+
+  &.black
+    background-color: #595f69
+
+  &.legal
+    cursor: pointer
+
+    &:hover
+      &.white
+        background-color: #949597
+
+      &.black
+        background-color: #2d2f33
+
+  &.active // TEMPORARY
+    background-color: red
+
+    &.white
+      background-color: #949597
+
+    &.black
+      background-color: #2d2f33
+
+.piece
+  font-size: 42px
+
+  &.white
+    color: #fff
+    stroke: #000
+    stroke-width: 5
+
+  &.black
+    color: #000
+    stroke: #fff
+    stroke-width: 5
+
+.game-info
+  margin-top: 5px
+  width: 100%
+  border-top: 1px solid #ccc
+  text-align: center
+
+.btn
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  display: inline-block
+  text-align: center
+  text-decoration: none
+  vertical-align: middle
+  cursor: pointer
+  background-color: transparent
+  border: none
+  padding: 12px 16px
+  font-size: 18px
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out
+
+  &:focus
+    outline: 0
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25)
+
+.btn-primary
+  color: #fff
+  background-color: #0d6efd
+
+  &:hover
+    background-color: #0b5ed7
+
+.status-spawn
+  background-color: #d1e7dd
+  color: #0f5132
+  transition: all .2s
+  position: absolute
+  top: 15px
+  right: 15px
+  padding: 15px 25px
+
+@media (max-width: 767.98px)
+  .row
+    flex-flow: column
+
+  .board
+    margin-bottom: 25px
+    width: 80vw
+    height: 80vw
+
+  .piece
+    font-size: 6.4vw
+
+@media (max-width: 575.98px)
+  .board
+    margin-top: 30px
+    margin-left: 10px
+
+  .square
+    &::after,
+    &::before
+      font-size: 14px
+
+    &::after
+      bottom: -20px
+
+    &::before
+      left: -20px
+
+  .btn
+    font-size: 16px
+
+  .status-spawn
+    padding: 10px 15px
+    font-size: 14px
+    width: 100%
+    top: 0
+    right: 0
+    left: 0
+    text-align: center
+
+/**********************/
+
+.square-debug
+  color: red
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  opacity: .5
