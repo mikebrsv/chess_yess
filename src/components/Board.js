@@ -9,13 +9,13 @@ const Board = () => {
 
   const [clickedSquare, setClickedSquare] = useState(null)
 
-  const [turnNumber, setTurnNumber] = useState(1)
+  const [moveNumber, setMoveNumber] = useState(1)
 
   useEffect(() => {
     setClickedSquare(null)
     setPickedPiece(null)
     setPickedSquare(null)
-  }, [turnNumber])
+  }, [moveNumber])
 
   const squareClickHandler = (index, piece) => {
     if (piece) {
@@ -24,7 +24,7 @@ const Board = () => {
     } else {
       if (pickedPiece) {
         setClickedSquare(index)
-        setTurnNumber(turnNumber + 1)
+        setMoveNumber(moveNumber + 1)
         newGame && setNewGame(false)
       }
     }
@@ -37,7 +37,7 @@ const Board = () => {
       </div>
 
       <div className="game-info">
-        {`Turn number: ${turnNumber}`}
+        {`Move number: ${moveNumber}`}
       </div>
     </>
   )
